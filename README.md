@@ -228,45 +228,6 @@ Listen 8080
 
 บันทึกและออก (`Ctrl+O`, `Enter`, `Ctrl+X`).
 
----
-
-### การตั้งค่า Apache2 สำหรับ Run pgAdmin และจัดการ PHP Module
-
----
-
-### **1. เปลี่ยนพอร์ตของ Apache เป็น 8080**
-
-1. **เปิดไฟล์การตั้งค่าของ Apache**:
-
-    ```bash
-    sudo nano /etc/apache2/ports.conf
-    ```
-
-2. **ค้นหาบรรทัดที่มีคำว่า `Listen`** และเปลี่ยน:
-
-    ```plaintext
-    Listen 80
-    ```
-
-    เป็น:
-
-    ```plaintext
-    Listen 8080
-    ```
-
-3. **รีสตาร์ต Apache**:
-
-    ```bash
-    sudo systemctl restart apache2
-    ```
-
-4. **ตรวจสอบพอร์ตที่ Apache กำลังฟัง**:
-    ```bash
-    netstat -tuln | grep 8080
-    ```
-
----
-
 ### **2. จัดการ PHP Modules**
 
 #### ปิดการใช้งาน PHP 8.1 Module\*\*
