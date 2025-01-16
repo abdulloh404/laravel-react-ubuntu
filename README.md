@@ -561,7 +561,7 @@ sudo nginx -t
 sudo systemctl restart nginx
 ```
 
-# การเปิดพอร์ตใน UFW และ Google Cloud Console
+# 8 การเปิดพอร์ตใน UFW และ Google Cloud Console
 
 ในคู่มือนี้ คุณจะได้เรียนรู้วิธีเปิดพอร์ต **80 (HTTP)**, **5050 (pgAdmin)** และ **5432 (PostgreSQL)** ทั้งใน **UFW** (Uncomplicated Firewall) บน Linux และ **Google Cloud Console** เพื่อให้สามารถเชื่อมต่อได้จากภายนอก.
 
