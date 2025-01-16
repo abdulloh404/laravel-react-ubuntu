@@ -726,7 +726,7 @@ psql -h <your-server-ip> -U <username> -d <database-name>
 
 ## ทดสอบเข้าเว็บไซต์ผ่าน Browser`
 
-เว็บไซต์ : http://<public_ip>
-pgAdmin : http://<public_ip>/pgadmin4
+-   เว็บไซต์ : http://<public_ip>
+-   pgAdmin : http://<public_ip>/pgadmin4
 
 หากสนใจ ssl และ dns แล้วค่อยเขียน วิธีทำ https และทำ domain name ให้
