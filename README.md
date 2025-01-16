@@ -11,8 +11,6 @@
 
 ทำตามขั้นตอนด้านล่างนี้เพื่อติดตั้ง PHP และ PHP-FPM บนระบบ Linux:
 
----
-
 ## อัปเดตแพ็กเกจของระบบ
 
 ก่อนติดตั้งซอฟต์แวร์ ให้ตรวจสอบว่าแพ็กเกจในระบบเป็นเวอร์ชันล่าสุด:
@@ -62,8 +60,6 @@ sudo systemctl status php8.3-fpm
 sudo systemctl start php8.3-fpm
 sudo systemctl enable php8.3-fpm
 ```
-
----
 
 ## ตรวจสอบแพ็กเกจ PHP ที่ติดตั้ง
 
@@ -225,6 +221,8 @@ sudo systemctl start nginx
 sudo systemctl enable nginx
 ```
 
+---
+
 ## ตั้งค่า Nginx ให้ทำงานร่วมกับ PHP-FPM
 
 ### แก้ไขไฟล์ Virtual Host ของ Nginx
@@ -282,8 +280,6 @@ sudo nginx -t
 sudo systemctl restart nginx
 ```
 
----
-
 ### 5.2 เปิดเบราว์เซอร์
 
 เข้าไปที่:
@@ -291,16 +287,53 @@ sudo systemctl restart nginx
 
 หากเห็นหน้าจอข้อมูล Nginx แสดงว่า Nginx และ PHP-FPM ทำงานร่วมกันสำเร็จ
 
-## 6. การตั้งค่าความปลอดภัยเพิ่มเติม (ถ้าจำเป็น)
-
--   ลบไฟล์ `info.php` หลังการทดสอบเสร็จ:
-
-    ```bash
-    sudo rm /var/www/html/info.php
-    ```
+## 6. การตั้งค่าความปลอดภัยเพิ่มเติม
 
 -   ตรวจสอบสิทธิ์ไฟล์ในโฟลเดอร์ `/var/www/html`:
+
     ```bash
-    sudo chown -R www-data:www-data /var/www/html
-    sudo chmod -R 755 /var/www/html
+    sudo chown -R www-data:www-data /var/www/project
+    sudo chmod -R 755 /var/www/project
     ```
+
+### วิธีเพิ่มผู้ใช้ `www-data` เข้ากลุ่มของผู้ใช้ `myuser`
+
+เพื่อให้ผู้ใช้ `www-data` ซึ่งเป็นผู้ใช้เริ่มต้นของ Nginx หรือ PHP-FPM สามารถเข้าถึงและจัดการไฟล์ของผู้ใช้ `myuser` ได้ คุณสามารถเพิ่ม `www-data` เข้าไปในกลุ่มของ `myuser` ได้ตามขั้นตอนดังนี้:
+
+## ตรวจสอบกลุ่มของผู้ใช้ `myuser`
+
+ใช้คำสั่งนี้เพื่อตรวจสอบว่าผู้ใช้ `myuser` สังกัดกลุ่มใด:
+
+```bash
+id -nG myuser
+```
+
+ตัวอย่างผลลัพธ์:
+
+```
+myuser group1 group2
+```
+
+## เพิ่ม `www-data` เข้าไปในกลุ่มของ `myuser`
+
+ใช้คำสั่งนี้เพื่อเพิ่มผู้ใช้ `www-data` เข้าไปในกลุ่มของ `myuser`:
+
+```bash
+sudo usermod -aG myuser www-data
+```
+
+## ตรวจสอบว่าการเพิ่มสำเร็จ
+
+ใช้คำสั่งนี้เพื่อตรวจสอบว่าผู้ใช้ `www-data` ถูกเพิ่มเข้าในกลุ่ม `myuser` สำเร็จหรือไม่:
+
+```bash
+groups www-data
+```
+
+ตัวอย่างผลลัพธ์:
+
+```
+www-data : www-data myuser
+```
+
+หากกลุ่ม `myuser` ปรากฏในรายการของ `www-data` แสดงว่าการเพิ่มสำเร็จ.
