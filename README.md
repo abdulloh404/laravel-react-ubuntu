@@ -320,7 +320,7 @@ sudo /usr/pgadmin4/bin/setup-web.sh
 เปิดไฟล์:
 
 ```bash
-sudo nano /etc/pgadmin/config.py
+sudo nano /usr/pgadmin4/web/config.py
 ```
 
 เพิ่มหรือแก้ไขค่าต่อไปนี้:
