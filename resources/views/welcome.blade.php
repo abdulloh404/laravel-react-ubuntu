@@ -8,6 +8,6 @@
     @vite('resources/js/app.jsx')
 </head>
 <body>
-    <div id="app"></div> <!-- React จะ Render ที่นี่ -->
+    <div id="app"></div>
 </body>
 </html>
