@@ -18,15 +18,6 @@
 ```bash
 sudo apt update
 ```
-
-### **รีสตาร์ต PHP-FPM**
-
-หลังจากแก้ไขไฟล์ `www.conf` เสร็จ ให้รีสตาร์ตบริการ PHP-FPM:
-
-```bash
-sudo systemctl restart php8.3-fpm
-```
-
 ## ติดตั้ง PHP และ PHP-FPM
 
 ใช้คำสั่งนี้เพื่อติดตั้ง PHP พร้อมกับ PHP-FPM:
